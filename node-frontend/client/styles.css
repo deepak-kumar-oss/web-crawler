@@ -1,0 +1,9 @@
+body { font-family: Arial, sans-serif; background:#f9f9f9; }
+.container { max-width:800px; margin:60px auto; text-align:center; }
+.searchbox { margin-bottom:20px; }
+input { padding:10px; width:60%; }
+button { padding:10px 16px; }
+.result { background:white; margin:10px; padding:12px; text-align:left; border-radius:6px; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
+.result a { color:#0a66c2; font-size:18px; text-decoration:none; }
+.url { font-size:12px; color:#555; margin-top:6px; }
+.score { font-size:12px; color:#888; margin-top:6px; }

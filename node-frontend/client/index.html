@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Mini Hybrid Search</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <h1>Mini Hybrid Search</h1>
+    <div class="searchbox">
+      <input id="searchBox" placeholder="Type your search..." />
+      <button onclick="doSearch()">Search</button>
+    </div>
+    <div id="results"></div>
+  </div>
+
+  <script>
+    async function doSearch(){
+      const q = document.getElementById('searchBox').value;
+      if(!q) return;
+      const res = await fetch('/api/search?q=' + encodeURIComponent(q));
+      const data = await res.json();
+      const out = document.getElementById('results');
+      out.innerHTML = '';
+      if(data.length === 0){ out.innerHTML = '<p>No results</p>'; return; }
+      for(const r of data){
+        const node = document.createElement('div');
+        node.className = 'result';
+        node.innerHTML = `<a href="${r.url}" target="_blank">${r.title}</a>
+                          <div class="url">${r.url}</div>
+                          <div class="score">score: ${r.score.toFixed(4)}</div>`;
+        out.appendChild(node);
+      }
+    }
+  </script>
+</body>
+</html>
